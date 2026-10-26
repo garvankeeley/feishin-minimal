@@ -22,6 +22,7 @@ import {
 } from 'electron';
 import electronLocalShortcut from 'electron-localshortcut';
 import { AppImageUpdater, autoUpdater, MacUpdater, NsisUpdater } from 'electron-updater';
+import { execFile } from 'child_process';
 import { access, constants } from 'fs';
 import path, { join } from 'path';
 import semver from 'semver';
@@ -384,6 +385,11 @@ ipcMain.on('input-focus-state', (_event, focused: boolean) => {
     inputFocused = next;
     if (isMacOS()) {
         updateMainMenu();
+    }
+    if (isLinux()) {
+        // wvkbd-mobile on-screen keyboard: SIGUSR2 shows, SIGUSR1 hides.
+        // pkill exits non-zero when the keyboard isn't running, so errors are ignored.
+        execFile('pkill', [next ? '-USR2' : '-USR1', '-x', 'wvkbd-mobile'], () => {});
     }
 });
 
