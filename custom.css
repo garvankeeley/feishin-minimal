@@ -1,9 +1,29 @@
+.test {
+fill:transparent;
+}
+
 /* Hide player bar buttons I don't use */
 [data-player-control="dlna-cast"],
 [data-player-control="sleep-timer"],
 [data-player-control="shuffle"],
 [data-player-control="repeat"],
 [data-player-control="play-random"],
-[data-player-control="lyrics"] {
+[data-player-control="lyrics"],
+[data-player-control="player-settings"] {
     display: none !important;
+}
+
+/* Hide the filter row on the radio stations view */
+[data-filter-bar="radio"] {
+    display: none !important;
+}
+
+/* Hide the stream URL in radio station rows */
+[data-radio-field="stream-url"] {
+    display: none !important;
+}
+
+/* Bigger station name in radio station rows, now that the URL is hidden */
+[class*="radio-list-items-module-meta"] > :first-child {
+    font-size: 1.25rem !important;
 }

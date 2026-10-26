@@ -133,7 +133,12 @@ const RadioListItem = ({ station }: RadioListItemProps) => {
                             <Text fw={500} size="md">
                                 {station.name}
                             </Text>
-                            <Text className={styles['meta-line']} isMuted size="sm">
+                            <Text
+                                className={styles['meta-line']}
+                                data-radio-field="stream-url"
+                                isMuted
+                                size="sm"
+                            >
                                 {station.streamUrl}
                             </Text>
                             {station.homepageUrl ? (

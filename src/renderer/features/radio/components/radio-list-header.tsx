@@ -32,7 +32,7 @@ export const RadioListHeader = ({ title }: RadioListHeaderProps) => {
                     <ListSearchInput />
                 </Group>
             </PageHeader>
-            <FilterBar>
+            <FilterBar data-filter-bar="radio">
                 <RadioListHeaderFilters />
             </FilterBar>
         </Stack>

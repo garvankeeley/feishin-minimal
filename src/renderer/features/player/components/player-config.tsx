@@ -209,6 +209,7 @@ export const PlayerConfig = () => {
         <Popover position="top" withArrow>
             <Popover.Target>
                 <ActionIcon
+                    data-player-control="player-settings"
                     icon="mediaSettings"
                     iconProps={{
                         size: 'lg',
