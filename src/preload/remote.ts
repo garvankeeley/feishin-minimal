@@ -62,7 +62,7 @@ const requestPlayPlaylist = (
     ipcRenderer.on('request-play-playlist', (_, data) => cb(data));
 };
 
-const requestPlayRadio = (cb: (data: { id: string }) => void) => {
+const requestPlayRadio = (cb: (data: { id?: string; name?: string }) => void) => {
     ipcRenderer.on('request-play-radio', (_, data) => cb(data));
 };
 

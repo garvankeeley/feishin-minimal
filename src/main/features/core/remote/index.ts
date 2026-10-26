@@ -596,6 +596,7 @@ const enableServer = (config: RemoteConfig): Promise<void> => {
                             case 'play-radio': {
                                 getMainWindow()?.webContents.send('request-play-radio', {
                                     id: json.id,
+                                    name: json.name,
                                 });
                                 break;
                             }

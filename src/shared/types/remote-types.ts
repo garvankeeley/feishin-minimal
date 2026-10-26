@@ -88,7 +88,10 @@ export interface ClientPlayPlaylist {
 
 export interface ClientPlayRadio {
     event: 'play-radio';
-    id: string;
+    /** Station id. Either `id` or `name` is required. */
+    id?: string;
+    /** Station name, matched case-insensitively. Used when `id` is not given. */
+    name?: string;
 }
 
 export interface ClientPlayTrack {

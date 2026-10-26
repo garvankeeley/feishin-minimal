@@ -1,0 +1,9 @@
+/* Hide player bar buttons I don't use */
+[data-player-control="dlna-cast"],
+[data-player-control="sleep-timer"],
+[data-player-control="shuffle"],
+[data-player-control="repeat"],
+[data-player-control="play-random"],
+[data-player-control="lyrics"] {
+    display: none !important;
+}

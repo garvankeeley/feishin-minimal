@@ -392,6 +392,7 @@ const LyricsButton = () => {
 
     return (
         <ActionIcon
+            data-player-control="lyrics"
             icon="microphone"
             iconProps={{
                 color: activeTab === 'lyrics' && isFullScreenPlayerExpanded ? 'primary' : undefined,

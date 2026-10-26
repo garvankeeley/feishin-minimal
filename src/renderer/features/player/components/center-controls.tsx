@@ -132,6 +132,7 @@ const ShuffleButton = ({ disabled }: { disabled?: boolean }) => {
 
     return (
         <PlayerButton
+            data-player-control="shuffle"
             disabled={disabled}
             icon={
                 <Icon
@@ -277,6 +278,7 @@ const RepeatButton = ({ disabled }: { disabled?: boolean }) => {
 
     return (
         <PlayerButton
+            data-player-control="repeat"
             disabled={disabled}
             icon={
                 repeat === PlayerRepeat.ONE ? (
@@ -318,6 +320,7 @@ const ShuffleAllButton = ({ disabled }: { disabled?: boolean }) => {
 
     return (
         <PlayerButton
+            data-player-control="play-random"
             disabled={disabled}
             icon={<Icon fill="default" icon="mediaRandom" size={buttonSize} />}
             onClick={() => openShuffleAllModal()}

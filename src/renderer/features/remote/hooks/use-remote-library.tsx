@@ -471,7 +471,7 @@ export const useRemoteLibrary = () => {
             );
         });
 
-        remote.requestPlayRadio(async ({ id }) => {
+        remote.requestPlayRadio(async ({ id, name }) => {
             const server = useAuthStore.getState().currentServer;
             if (!server) return;
 
@@ -479,7 +479,9 @@ export const useRemoteLibrary = () => {
                 const stations = await queryClient.fetchQuery(
                     radioQueries.list({ query: undefined, serverId: server.id }),
                 );
-                const station = stations.find((s) => s.id === id);
+                const station = id
+                    ? stations.find((s) => s.id === id)
+                    : stations.find((s) => s.name.toLowerCase() === name?.toLowerCase());
                 if (!station) return;
 
                 useRadioStore.getState().actions.play(station.streamUrl, station.name, {
