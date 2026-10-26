@@ -1,7 +1,11 @@
 import isElectron from 'is-electron';
 import { useEffect } from 'react';
 
-import { useIsRadioActive, useRadioStore } from '/@/renderer/features/radio/hooks/use-radio-player';
+import {
+    useIsPlayingRadio,
+    useIsRadioActive,
+    useRadioStore,
+} from '/@/renderer/features/radio/hooks/use-radio-player';
 import { useRemoteSettings } from '/@/renderer/store/settings.store';
 
 const remote = isElectron() ? window.api.remote : null;
@@ -16,6 +20,7 @@ const remote = isElectron() ? window.api.remote : null;
 export const useRemoteRadioPush = () => {
     const isRemoteEnabled = useRemoteSettings().enabled;
     const isRadioActive = useIsRadioActive();
+    const isPlaying = useIsPlayingRadio();
     const stationName = useRadioStore((state) => state.stationName);
     const currentStationArt = useRadioStore((state) => state.currentStationArt);
 
@@ -26,12 +31,13 @@ export const useRemoteRadioPush = () => {
             remote.updateRadioStatus({
                 imageUrl: currentStationArt?.imageUrl ?? null,
                 isActive: true,
+                isPlaying,
                 stationName: stationName ?? '',
             });
         } else {
             remote.updateRadioStatus({ isActive: false });
         }
-    }, [isRemoteEnabled, isRadioActive, stationName, currentStationArt]);
+    }, [isRemoteEnabled, isRadioActive, isPlaying, stationName, currentStationArt]);
 };
 
 export const RemoteRadioPushHook = () => {

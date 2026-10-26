@@ -294,7 +294,9 @@ export interface ServerRadioResponse {
 }
 
 export interface ServerRadioStatus {
-    data: { imageUrl: null | string; isActive: true; stationName: string } | { isActive: false };
+    data:
+        | { imageUrl: null | string; isActive: true; isPlaying: boolean; stationName: string }
+        | { isActive: false };
     event: 'radio-status';
 }
 
