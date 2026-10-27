@@ -502,6 +502,7 @@ export const NavidromeController: InternalControllerEndpoint = {
                 _order: sortOrderMap.navidrome[query.sortOrder],
                 _sort: albumArtistListSortMap.navidrome[query.sortBy],
                 _start: query.startIndex,
+                _filters: JSON.stringify({ gt: { albumCount: 0, songCount: 3 } }),
                 library_id: getLibraryId(query.musicFolderId),
                 name: query.searchTerm,
                 role: query.role || undefined,

@@ -467,6 +467,7 @@ const albumArtist = z.object({
 const albumArtistList = z.array(albumArtist);
 
 const albumArtistListParameters = paginationParameters.extend({
+    _filters: z.string().optional(),
     _sort: z.nativeEnum(NDAlbumArtistListSort).optional(),
     genre_id: z.string().optional(),
     library_id: z.array(z.string()).optional(),
