@@ -212,9 +212,10 @@ export const AlbumDetailHeader = forwardRef<HTMLDivElement>((_props, ref) => {
 
         if (!album) return null;
 
-        // Hide the "ALBUM" label. Returning an element (even an empty one) keeps
-        // LibraryHeader from falling back to its own "ALBUM" type label.
-        if (album.releaseType?.toLowerCase() === 'album') {
+        // Hide the "ALBUM" label when the release type is plain album or missing.
+        // Returning an element (even an empty one) keeps LibraryHeader from falling
+        // back to its own "ALBUM" type label.
+        if (!album.releaseType || album.releaseType.toLowerCase() === 'album') {
             return <Group gap="sm">{album.version && <Text>{album.version}</Text>}</Group>;
         }
 
