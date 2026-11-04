@@ -44,8 +44,6 @@ const NoNetworkRoute = lazy(
 
 const HomeRoute = lazy(() => import('/@/renderer/features/home/routes/home-route'));
 
-const ArtistListRoute = lazy(() => import('/@/renderer/features/artists/routes/artist-list-route'));
-
 const AlbumArtistListRoute = lazy(
     () => import('/@/renderer/features/artists/routes/album-artist-list-route'),
 );
@@ -258,7 +256,7 @@ export const AppRouter = () => {
                                             path={AppRoute.LIBRARY_ALBUMS_DETAIL}
                                         />
                                         <Route
-                                            element={<ArtistListRoute />}
+                                            element={<AlbumArtistListRoute />}
                                             path={AppRoute.LIBRARY_ARTISTS}
                                         />
                                         <Route path={AppRoute.LIBRARY_ARTISTS_DETAIL}>
