@@ -212,6 +212,12 @@ export const AlbumDetailHeader = forwardRef<HTMLDivElement>((_props, ref) => {
 
         if (!album) return null;
 
+        // Hide the "ALBUM" label. Returning an element (even an empty one) keeps
+        // LibraryHeader from falling back to its own "ALBUM" type label.
+        if (album.releaseType?.toLowerCase() === 'album') {
+            return <Group gap="sm">{album.version && <Text>{album.version}</Text>}</Group>;
+        }
+
         const releaseTypes = album.releaseType
             ? normalizeReleaseTypes([album.releaseType], t)
             : null;
@@ -259,6 +265,12 @@ export const AlbumDetailHeader = forwardRef<HTMLDivElement>((_props, ref) => {
                     type: LibraryItem.ALBUM,
                 }}
                 title={detailQuery?.data?.name || ''}
+                titleAccessory={
+                    <JoinedArtists
+                        artistName={detailQuery?.data?.albumArtistName || ''}
+                        artists={detailQuery?.data?.albumArtists || []}
+                    />
+                }
             >
                 <Stack gap="md" w="100%">
                     <Group className={styles.metadataGroup} gap="xs">
@@ -273,12 +285,6 @@ export const AlbumDetailHeader = forwardRef<HTMLDivElement>((_props, ref) => {
                                 <Text fw={400}>{item.value}</Text>
                             </Fragment>
                         ))}
-                    </Group>
-                    <Group className={styles.metadataGroup}>
-                        <JoinedArtists
-                            artistName={detailQuery?.data?.albumArtistName || ''}
-                            artists={detailQuery?.data?.albumArtists || []}
-                        />
                     </Group>
                     <LibraryHeaderMenu
                         favorite={detailQuery?.data?.userFavorite}

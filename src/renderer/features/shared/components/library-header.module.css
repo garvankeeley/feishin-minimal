@@ -164,6 +164,19 @@
     border-radius: 5px;
 }
 
+.title-row {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--theme-spacing-sm);
+    align-items: baseline;
+    justify-content: center;
+    max-width: 100%;
+
+    @container (min-width: $mantine-breakpoint-sm) {
+        justify-content: flex-start;
+    }
+}
+
 .title {
     display: flex;
     margin: 0;

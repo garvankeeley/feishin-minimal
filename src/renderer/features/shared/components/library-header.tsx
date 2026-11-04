@@ -55,6 +55,8 @@ interface LibraryHeaderProps {
     loading?: boolean;
     onImageFileDrop?: (file: File) => Promise<void> | void;
     title: string;
+    /** Rendered on the same line as the title, after it */
+    titleAccessory?: ReactNode;
     topRight?: ReactNode;
 }
 
@@ -69,6 +71,7 @@ export const LibraryHeader = forwardRef(
             item,
             onImageFileDrop,
             title,
+            titleAccessory,
             topRight,
         }: LibraryHeaderProps,
         ref: Ref<HTMLDivElement>,
@@ -246,14 +249,17 @@ export const LibraryHeader = forwardRef(
                             </Text>
                         )}
 
-                        <h1
-                            className={styles.title}
-                            style={{
-                                fontSize: calculateTitleSize(title),
-                            }}
-                        >
-                            {title}
-                        </h1>
+                        <div className={styles.titleRow}>
+                            <h1
+                                className={styles.title}
+                                style={{
+                                    fontSize: calculateTitleSize(title),
+                                }}
+                            >
+                                {title}
+                            </h1>
+                            {titleAccessory}
+                        </div>
                         {children}
                     </div>
                 )}
