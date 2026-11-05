@@ -484,6 +484,14 @@ export const useRemoteLibrary = () => {
                     : stations.find((s) => s.name.toLowerCase() === name?.toLowerCase());
                 if (!station) return;
 
+                // Playing the station that is already loaded would just resume the paused
+                // stream from where it stopped. Clear first, then play after a tick, so the
+                // player sees a new URL and loads the live stream fresh.
+                if (useRadioStore.getState().currentStreamUrl === station.streamUrl) {
+                    useRadioStore.getState().actions.clear();
+                    await new Promise((resolve) => setTimeout(resolve, 0));
+                }
+
                 useRadioStore.getState().actions.play(station.streamUrl, station.name, {
                     id: station.id,
                     imageId: station.imageId,
