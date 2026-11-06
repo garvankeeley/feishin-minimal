@@ -32,3 +32,8 @@ fill:transparent;
 [class~="fs-library-header-imageSection"] {
     zoom: 0.8;
 }
+
+/* No space above the library/album/artist header image */
+[class~="fs-library-header-libraryHeader"] {
+    padding-top: 0 !important;
+}
