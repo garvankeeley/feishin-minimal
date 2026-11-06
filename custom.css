@@ -33,7 +33,7 @@ fill:transparent;
     zoom: 0.8;
 }
 
-/* No space above the library/album/artist header image */
-[class~="fs-library-header-libraryHeader"] {
-    padding-top: 0 !important;
+/* No padding on the library/album/artist header */
+.fs-library-header-module-library-header {
+    padding: 0 !important;
 }
