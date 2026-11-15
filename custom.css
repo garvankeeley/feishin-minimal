@@ -1,5 +1,10 @@
-.test {
-fill:transparent;
+html {
+    font-size: 20px !important;
+}
+
+/* Fix no scroll on the dj settings */
+[class~="fs-popover-module-dropdown"] {
+ overflow-y: auto !important;
 }
 
 /* Hide player bar buttons I don't use */
@@ -29,7 +34,7 @@ fill:transparent;
 }
 
 /* Album detail header art at 80% of its size (LibraryHeader image wrapper) */
-[class~="fs-library-header-imageSection"] {
+[class~="fs-library-header-module-image-section"] {
     zoom: 0.8;
 }
 
